@@ -1,0 +1,53 @@
+<script>
+function getResultToChallenge(number){
+    var array = new Array();
+    var countduplicate = 0;
+    var numberChange;
+    var arrnumberChange = new Array();
+    var countArr = new Array();
+    for(var i =1;i<=number;i++){
+        var numberRan = Math.random() *(number*2)-number;
+        var numberRanFloor = Math.floor(numberRan);
+        array.push(numberRanFloor);
+    }
+    array = array.sort();
+
+    for(var e=0;e<number;e++){
+        if(array[e] != numberChange ){
+            numberChange = array[e];
+            countduplicate =1;
+            arrnumberChange.push(numberChange);
+            countArr.push(countduplicate);
+        }else{
+            countArr[countArr.length-1]++;
+        }
+    }
+    for(var p=0;p<arrnumberChange.length;p++){
+        console.log(arrnumberChange[p]+'->'+countArr[p]);
+    }
+    
+    numberMin = Math.min(...arrnumberChange);
+    numberMax = Math.max(...arrnumberChange);
+    indexMin = arrnumberChange.indexOf(numberMin);
+    indexMax = arrnumberChange.indexOf(numberMax);
+    console.log('Số lớn nhất là '+numberMax+'->'+countArr[indexMax]+' sẽ là '+(numberMax-countArr[indexMax]));
+    console.log('Số nhỏ nhất là '+numberMin+'->'+countArr[indexMin]+' sẽ là '+(numberMin+countArr[indexMin]));
+    for (var o=0;o<arrnumberChange.length;o++){
+        if(isPrime(arrnumberChange[o])){
+            console.log('Số nguyên tố là :'+arrnumberChange[o]);
+        }
+    }
+}
+    function isPrime(num){
+        var prime = num >1;
+        for(i=2;i<num;i++){
+            if(num%i===0){
+                prime =false;
+                break;
+            }
+        }
+        return prime;
+    }
+//    isPrime(21);
+    getResultToChallenge(8);
+</script>
